@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Nhom6_6</string>
+    <string name="dangnhap">Đăng nhập</string>
+    <string name="shipper">Shipper</string>
+    <string name="thukho">Thủ kho</string>
+    <string name="tdn">Nhập tên đăng nhập</string>
+    <string name="password">Mật khẩu</string>
+    <string name="dangki">Đăng kí</string>
+    <string name="donhang">Các đơn hàng cần giao</string>
+    <string name="dangxuat">Đăng xuất</string>
+    <string name="dsdonhang">Danh sách đơn hàng</string>
+    <string name="tenshippper">Danh sách các shipper: </string>
+    <string-array name="danhsachshipper">
+        <item>Trần Thanh Nhàn</item>
+        <item>Võ Thành Tài</item>
+        <item>Trần Thị Thục Trinh</item>
+        <item>Bùi Tuyết Băng</item>
+    </string-array>
+    <string name="Ten">Nhập tên </string>
+    <string name="xtmatkhau">Xác thực mật khẩu </string>
+    <string name="sdt">Nhập số điện thoại </string>
+    <string name="huy">Hủy </string>
+</resources>

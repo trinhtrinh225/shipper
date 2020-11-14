@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DangKi"
+    android:orientation="vertical">
+    <TextView
+        style="@style/Tieude"
+        android:text="@string/dangki" />
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <EditText
+                style="@style/Edittest"
+                android:hint="@string/tdn"/>
+            <EditText
+                style="@style/Edittest"
+                android:hint="@string/Ten"/>
+            <EditText
+                style="@style/Edittest"
+                android:hint="@string/password"/>
+            <EditText
+                style="@style/Edittest"
+                android:hint="@string/xtmatkhau"/>
+            <EditText
+                style="@style/Edittest"
+                android:hint="@string/sdt"
+                />
+
+            <LinearLayout
+                style="@style/Linear">
+                <RadioGroup
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <RadioButton
+                        style="@style/Radiobutton"
+                        android:text="@string/shipper" />
+                    <RadioButton
+                        style="@style/Radiobutton"
+                        android:text="@string/thukho" />
+                </RadioGroup>
+            </LinearLayout>
+            <Button
+                android:id="@+id/btnDangKi"
+                style="@style/Button"
+                android:text="@string/dangki" />
+
+            <Button
+                android:id="@+id/btnDangXuat"
+                style="@style/Button"
+                android:layout_marginTop="10dp"
+                android:text="@string/huy"
+                />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

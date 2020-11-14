@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "178744077481",
+    "firebase_url": "https://fir-4bdd7.firebaseio.com",
+    "project_id": "fir-4bdd7",
+    "storage_bucket": "fir-4bdd7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:178744077481:android:d881c1eba9d1a2aa644db8",
+        "android_client_info": {
+          "package_name": "com.trinh.demo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "178744077481-kerievd2nql5l5l1glad2rfvk82g9spf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCVMrXlZ46SLMVY5VXZBRkaQKVitwDdAao"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "178744077481-kerievd2nql5l5l1glad2rfvk82g9spf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

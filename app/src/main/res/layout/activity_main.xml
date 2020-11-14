@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical"
+    >
+    <TextView
+        style="@style/Tieude"
+        android:text="@string/dangnhap"
+        />
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+    <ImageView
+        android:src="@drawable/shipper"
+        style="@style/Logo"
+         />
+    <LinearLayout
+       style="@style/Linear">
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <RadioButton
+                style="@style/Radiobutton"
+                android:text="@string/shipper" />
+            <RadioButton
+                style="@style/Radiobutton"
+                android:text="@string/thukho" />
+        </RadioGroup>
+    </LinearLayout>
+    <EditText
+        style="@style/Edittest"
+        android:hint="@string/tdn"/>
+    <EditText
+        style="@style/Edittest"
+        android:hint="@string/password"
+        />
+
+    <Button
+        android:id="@+id/btnDangNhap"
+        style="@style/Button"
+        android:text="@string/dangnhap" />
+
+    <Button
+        android:id="@+id/btnDangKi"
+        style="@style/Button"
+        android:layout_marginTop="10dp"
+        android:text="@string/dangki"
+         />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
