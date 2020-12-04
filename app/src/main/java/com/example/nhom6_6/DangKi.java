@@ -42,33 +42,23 @@ public class DangKi extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dang_ki);
-
         intent = getIntent();
         auth = FirebaseAuth.getInstance();
-
-
-
-
-
         setControl();
         setEvent();
-
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
-
-
     }
     private void setEvent() {
-
         btnDangKi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
             String tendangnhap = edttendangnhap.getText().toString().trim();
             String ten = edtten.getText().toString().trim();
             String matkhau = edtmatkhau.getText().toString().trim();
             String xacnhanmk = edtxacnhapmatkhau.getText().toString().trim();
             String sdt = edtsdt.getText().toString().trim();
+
             String btn1 = rddshipper.getText().toString();
             String btn2 = rddthukhoa.getText().toString();
 

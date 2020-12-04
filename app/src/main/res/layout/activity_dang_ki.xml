@@ -29,10 +29,12 @@
             <EditText
                 style="@style/Edittest"
                 android:id="@+id/matkhau"
+                android:password="true"
                 android:hint="@string/password"/>
             <EditText
                 style="@style/Edittest"
                 android:id="@+id/xacnhanmatkhau"
+                android:password="true"
                 android:hint="@string/xtmatkhau"/>
             <EditText
                 style="@style/Edittest"

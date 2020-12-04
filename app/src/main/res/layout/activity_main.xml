@@ -44,6 +44,7 @@
     <EditText
         style="@style/Edittest"
         android:hint="@string/password"
+        android:password="true"
         android:id="@+id/matkhau"
         />
 

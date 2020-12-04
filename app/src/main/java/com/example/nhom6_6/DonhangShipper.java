@@ -28,7 +28,7 @@ public class DonhangShipper extends AppCompatActivity {
     ListView listView;
     Firebase root;
     FirebaseAuth mAuth;
-    ArrayList<DHShip> myArrayList;
+    ArrayList<String> myArrayList;
     DHShip DHShip;
 
 
@@ -42,9 +42,9 @@ public class DonhangShipper extends AppCompatActivity {
         Anhxa();
         Event();
         Firebase.setAndroidContext(this);
-        root = new Firebase("https://Shipper.firebaseio.com/");
+        root = new Firebase("https://shipper-dc26c.firebaseio.com");
 
-         final ArrayList<String> myArrayList = new ArrayList<>();
+        final ArrayList<String> myArrayList = new ArrayList<>();
         final ArrayAdapter<String> myArrayAdapter = new ArrayAdapter<String>(getApplicationContext(),
                 android.R.layout.simple_list_item_1,
                 myArrayList);
