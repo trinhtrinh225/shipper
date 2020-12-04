@@ -39,10 +39,12 @@
     </LinearLayout>
     <EditText
         style="@style/Edittest"
+        android:id="@+id/tendangnhap"
         android:hint="@string/tdn"/>
     <EditText
         style="@style/Edittest"
         android:hint="@string/password"
+        android:id="@+id/matkhau"
         />
 
     <Button

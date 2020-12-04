@@ -31,6 +31,7 @@
     <Button
         android:layout_marginTop="10dp"
         style="@style/Button"
+        android:id="@+id/dangxuat"
         android:text="@string/dangxuat"
         />
 

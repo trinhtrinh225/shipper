@@ -6,14 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".DonhangShipper"
     android:orientation="vertical">
+
     <TextView
-        style="@style/Tieude"
-        android:text="@string/donhang"
-        />
+       style="@style/Tieude"
+        android:text="@string/donhang"></TextView>
     <ListView
         style="@style/Listview"
+        android:id="@+id/lstdanhsachdonhangshipper"
         android:layout_height="330dp" />
     <Button
+        android:id="@+id/dangxuat"
         android:layout_marginTop="10dp"
         style="@style/Button"
         android:text="@string/dangxuat"
