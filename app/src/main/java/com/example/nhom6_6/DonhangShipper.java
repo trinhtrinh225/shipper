@@ -42,7 +42,7 @@ public class DonhangShipper extends AppCompatActivity {
         Anhxa();
         Event();
         Firebase.setAndroidContext(this);
-        root = new Firebase("https://shipper-dc26c.firebaseio.com");
+        root = new Firebase("https://shipper-d510d.firebaseio.com");
 
         final ArrayList<String> myArrayList = new ArrayList<>();
         final ArrayAdapter<String> myArrayAdapter = new ArrayAdapter<String>(getApplicationContext(),
