@@ -1,6 +1,5 @@
 package com.example.nhom6_6;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,26 +13,20 @@ import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
+import com.example.nhom6_6.Model.Acount;
 import com.google.firebase.auth.FirebaseAuth;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 public class DangKi extends AppCompatActivity {
      Button btnDangKi, btnDangXuat;
      EditText edttendangnhap,edtten,edtmatkhau,edtxacnhapmatkhau,edtsdt;
      ProgressBar progressBar;
-     RadioButton rddshipper,rddthukhoa;
-
+     RadioButton rddshipper,rddthukho;
+     Acount acount;
      int i = 0;
-     DatabaseReference reference;
-     FirebaseDatabase database;
+     DatabaseReference mData;
      FirebaseAuth auth = FirebaseAuth.getInstance();
 
     Intent intent;
@@ -44,6 +37,7 @@ public class DangKi extends AppCompatActivity {
         setContentView(R.layout.activity_dang_ki);
         intent = getIntent();
         auth = FirebaseAuth.getInstance();
+        mData = FirebaseDatabase.getInstance().getReference();
         setControl();
         setEvent();
         ActionBar actionBar = getSupportActionBar();
@@ -51,70 +45,75 @@ public class DangKi extends AppCompatActivity {
     }
     private void setEvent() {
         btnDangKi.setOnClickListener(new View.OnClickListener() {
+
+
+
             @Override
             public void onClick(View view) {
-            String tendangnhap = edttendangnhap.getText().toString().trim();
-            String ten = edtten.getText().toString().trim();
-            String matkhau = edtmatkhau.getText().toString().trim();
-            String xacnhanmk = edtxacnhapmatkhau.getText().toString().trim();
-            String sdt = edtsdt.getText().toString().trim();
-
-            String btn1 = rddshipper.getText().toString();
-            String btn2 = rddthukhoa.getText().toString();
-
-            if(TextUtils.isEmpty(tendangnhap)){
-                Toast.makeText(getApplicationContext(),"Mời bạn nhập tên đăng nhập",Toast.LENGTH_SHORT).show();
-                return;
-            }
-            if (TextUtils.isEmpty(ten))
-            {
-                Toast.makeText(getApplicationContext(),"Mời bạn nhập tên ",Toast.LENGTH_SHORT).show();
-                return;
-            }
-            if(TextUtils.isEmpty(matkhau)){
-                Toast.makeText(getApplicationContext(),"Mời bạn nhập mật khẩu",Toast.LENGTH_SHORT).show();
-                return;
-            }
-            if(TextUtils.isEmpty(xacnhanmk))
-            {
-                Toast.makeText(getApplicationContext(),"Mời bạn nhập mật khẩu xác nhận",Toast.LENGTH_SHORT).show();
-                return;
-            }
-            if(TextUtils.isEmpty(sdt))
-            {
-                Toast.makeText(getApplicationContext(),"Mời bạn nhập số điện thoại",Toast.LENGTH_SHORT).show();
-                return;
-            }
-            if(matkhau.length() < 8)
-            {
-                Toast.makeText(getApplicationContext(),"Nhập tối đa 8 kí tự , mời bạn nhập mật khẩu",Toast.LENGTH_SHORT).show();
-                return;
-            }
-            progressBar.setVisibility(View.VISIBLE);
-
-            auth.createUserWithEmailAndPassword(edttendangnhap.getText().toString(),edtmatkhau.getText().toString()).addOnCompleteListener( new OnCompleteListener<AuthResult>() {
-                @Override
-                public void onComplete(@NonNull Task<AuthResult> task) {
-                    if(task.isComplete())
-                    {
-                        Toast.makeText(DangKi.this,"Dang ki thanh cong!",Toast.LENGTH_SHORT).show();
-                        progressBar.setVisibility(View.GONE);
-                        intent = new Intent(DangKi.this,MainActivity.class);
-                        startActivity(intent);
-                    }
-                    else{
-                        Toast.makeText(DangKi.this,"Dang ki khong thanh cong! ",Toast.LENGTH_SHORT).show();
-
-                    }
+                String tendangnhap = edttendangnhap.getText().toString().trim();
+                String ten = edtten.getText().toString().trim();
+                String matkhau = edtmatkhau.getText().toString().trim();
+                String xacnhanmk = edtxacnhapmatkhau.getText().toString().trim();
+                String sdt = edtsdt.getText().toString().trim();
+                if(TextUtils.isEmpty(tendangnhap)){
+                    Toast.makeText(getApplicationContext(),"Mời bạn nhập tên đăng nhập",Toast.LENGTH_SHORT).show();
+                    return;
                 }
-            });
-            }
+                if (TextUtils.isEmpty(ten))
+                {
+                    Toast.makeText(getApplicationContext(),"Mời bạn nhập tên ",Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if(TextUtils.isEmpty(matkhau)){
+                    Toast.makeText(getApplicationContext(),"Mời bạn nhập mật khẩu",Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if(TextUtils.isEmpty(xacnhanmk))
+                {
+                    Toast.makeText(getApplicationContext(),"Mời bạn nhập mật khẩu xác nhận",Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if(TextUtils.isEmpty(sdt))
+                {
+                    Toast.makeText(getApplicationContext(),"Mời bạn nhập số điện thoại",Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if(matkhau.length() < 6)
+                {
+                    Toast.makeText(getApplicationContext(),"Nhập ít nhất 6 kí tự , mời bạn nhập mật khẩu",Toast.LENGTH_SHORT).show();
+                    return;
+                }
 
+                progressBar.setVisibility(View.VISIBLE);
+                String chucvu;
+                if(rddshipper.isChecked())
+                {
+                    chucvu = "Shipper";
+                }
+                else{
+                    chucvu = "Thukho";
+                }
+                acount = new Acount(edttendangnhap.getText().toString(),edtten.getText().toString(),edtmatkhau.getText().toString(),edtxacnhapmatkhau.getText().toString(),edtsdt.getText().toString(),chucvu.toString());
+                if(chucvu.equals("Shipper"))
+                {
+
+                        mData.child("danhsachtaikhoan").child(edtten.getText().toString()).setValue(acount);
+                    Toast.makeText(DangKi.this, "dang ki thanh cong", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(DangKi.this,DangNhap.class);
+                    startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                }
+                else if(chucvu.equals("Thukho")){
+                    mData.child("danhsachtaikhoan").child(edtten.getText().toString()).setValue(acount);
+                    Toast.makeText(DangKi.this, "dang ki thanh cong", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(DangKi.this,DangNhap.class);
+                    startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                }
+            }
         });
         btnDangXuat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent= new Intent(DangKi.this, MainActivity.class);
+                Intent intent= new Intent(DangKi.this, DangNhap.class);
                 startActivity(intent);
             }
         });
@@ -137,7 +136,7 @@ public class DangKi extends AppCompatActivity {
         edtsdt = findViewById(R.id.sdt);
         progressBar = findViewById(R.id.progressBar);
         rddshipper = findViewById(R.id.rddshipper);
-        rddthukhoa = findViewById(R.id.rddthukhoa);
+        rddthukho = findViewById(R.id.rddthukhoa);
 
     }
 }

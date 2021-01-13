@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
+    tools:context=".DangNhap"
     android:orientation="vertical"
     >
     <TextView
@@ -30,9 +30,11 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <RadioButton
+                android:id="@+id/shipper"
                 style="@style/Radiobutton"
                 android:text="@string/shipper" />
             <RadioButton
+                android:id="@+id/thukho"
                 style="@style/Radiobutton"
                 android:text="@string/thukho" />
         </RadioGroup>
@@ -49,7 +51,7 @@
         />
 
     <Button
-        android:id="@+id/btnDangNhap"
+        android:id="@+id/DangNhap"
         style="@style/Button"
         android:text="@string/dangnhap" />
 

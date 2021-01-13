@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="MaDH: "
+        android:id="@+id/tvMaDH"
+        android:textSize="25dp"
+            android:textColor="@color/colorBlue"
+        android:layout_marginLeft="50dp"
+        ></TextView>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Date : "
+            android:id="@+id/tvDate"
+            android:textColor="@color/colorBlue"
+
+            android:textSize="25dp"
+            android:layout_marginLeft="50dp"
+            ></TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Discount : "
+            android:id="@+id/tvDiscount"
+            android:textColor="@color/colorBlue"
+
+            android:textSize="25dp"
+            android:layout_marginLeft="50dp"
+            ></TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="DiscountPrice: "
+            android:id="@+id/tvDiscount_price"
+            android:textColor="@color/colorBlue"
+
+            android:textSize="25dp"
+            android:layout_marginLeft="50dp"
+            ></TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Name: "
+            android:id="@+id/tvName"
+            android:textColor="@color/colorBlue"
+
+            android:textSize="25dp"
+            android:layout_marginLeft="50dp"
+            ></TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Price: "
+            android:id="@+id/tvPrice"
+            android:textColor="@color/colorBlue"
+
+            android:textSize="25dp"
+            android:layout_marginLeft="50dp"
+            ></TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PriceFinal: "
+            android:id="@+id/tvPrice_Final"
+            android:textColor="@color/colorBlue"
+
+            android:textSize="25dp"
+            android:layout_marginLeft="50dp"
+            ></TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Quantity: "
+            android:id="@+id/tvQuantity"
+            android:textColor="@color/colorBlue"
+
+            android:textSize="25dp"
+            android:layout_marginLeft="50dp"
+            ></TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Time : "
+            android:id="@+id/tvTime"
+            android:textColor="@color/colorBlue"
+
+            android:textSize="25dp"
+            android:layout_marginLeft="50dp"
+            ></TextView>
+    </LinearLayout>
+</LinearLayout>

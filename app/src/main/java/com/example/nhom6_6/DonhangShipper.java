@@ -1,26 +1,32 @@
 package com.example.nhom6_6;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.example.nhom6_6.Model.DHShip;
-import com.firebase.client.ChildEventListener;
-import com.firebase.client.DataSnapshot;
+import com.example.nhom6_6.Model.ThongtinDH;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
+import com.firebase.ui.database.FirebaseListAdapter;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-import static android.app.PendingIntent.getActivity;
+
 
 
 public class DonhangShipper extends AppCompatActivity {
@@ -28,8 +34,10 @@ public class DonhangShipper extends AppCompatActivity {
     ListView listView;
     Firebase root;
     FirebaseAuth mAuth;
-    ArrayList<String> myArrayList;
-    DHShip DHShip;
+    ArrayList<ThongtinDH> arrayListdh = new ArrayList<>();
+    DatabaseReference databaseReference;
+
+    private FirebaseUser firebaseUser;
 
 
     @Override
@@ -38,54 +46,51 @@ public class DonhangShipper extends AppCompatActivity {
         setContentView(R.layout.activity_donhang_shipper);
         Intent intent = getIntent();
         mAuth = FirebaseAuth.getInstance();
+        databaseReference = FirebaseDatabase.getInstance().getReference();
+        firebaseUser = mAuth.getCurrentUser();
 
         Anhxa();
         Event();
+
+
         Firebase.setAndroidContext(this);
-        root = new Firebase("https://shipper-d510d.firebaseio.com");
+        root = new Firebase("https://ecommerceuser-844f8.firebaseio.com");
 
-        final ArrayList<String> myArrayList = new ArrayList<>();
-        final ArrayAdapter<String> myArrayAdapter = new ArrayAdapter<String>(getApplicationContext(),
-                android.R.layout.simple_list_item_1,
-                myArrayList);
-        listView.setAdapter(myArrayAdapter);
+        try {
+            final ArrayList<ThongtinDH> myArrayList = new ArrayList<>();
+            final ArrayAdapter<ThongtinDH> myArrayAdapter = new ArrayAdapter<ThongtinDH>(this,
+                    android.R.layout.simple_list_item_1,
+                    myArrayList);
+            listView.setAdapter(myArrayAdapter);
 
-        root.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                myArrayList.add(dataSnapshot.getValue().toString());
-                myArrayAdapter.notifyDataSetChanged();
-            }
+            DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
 
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+            ref.child("CartList").child("UserView").child("Products").addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    ThongtinDH thongtinDH = snapshot.getValue(ThongtinDH.class);
+                    arrayListdh.add(thongtinDH);
+                    myArrayAdapter.notifyDataSetChanged();
+                }
 
-            }
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
 
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
+                }
+            });
+        } catch (Exception e) {
+            Toast.makeText(getApplicationContext(), "error" + e, Toast.LENGTH_SHORT).show();
+        }
 
-            }
 
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
-            }
-
-            @Override
-            public void onCancelled(FirebaseError firebaseError) {
-
-            }
-        });
     }
-
     private void Event() {
         btnDX.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 mAuth.signOut();
                 Toast.makeText(DonhangShipper.this,"bạn đã đăng xuất", Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(DonhangShipper.this,MainActivity.class);
+                Intent intent = new Intent(DonhangShipper.this, DangNhap.class);
                 startActivity(intent);
             }
         });
@@ -93,7 +98,7 @@ public class DonhangShipper extends AppCompatActivity {
 
     private void Anhxa() {
         btnDX = (Button) findViewById(R.id.dangxuat);
-        listView = (ListView) findViewById(R.id.lstdanhsachdonhangshipper);
+        listView = (ListView)findViewById(R.id.lstdanhsachdonhangshipper);
 
     }
 

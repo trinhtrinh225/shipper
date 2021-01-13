@@ -26,14 +26,19 @@
 
     </LinearLayout>
     <ListView
-        style="@style/Listview"
-        android:layout_height="330dp" />
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:id="@+id/lstdanhsachdonhangthukho"></ListView>
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/myRecyclerView">
+    </androidx.recyclerview.widget.RecyclerView>
     <Button
         android:layout_marginTop="10dp"
         style="@style/Button"
         android:id="@+id/dangxuat"
-        android:text="@string/dangxuat"
-        />
+        android:text="@string/dangxuat"/>
 
 
 </LinearLayout>
